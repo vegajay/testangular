@@ -60,6 +60,7 @@ app.config(function($routeProvider, $locationProvider, $stateProvider) {
             title: 'State 1',
             views: {
                 "fullscreen": {
+                    controller: 'state1Contrl',
                     templateUrl: 'views/test_state1.html'
                 }
             }
