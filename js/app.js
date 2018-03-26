@@ -92,7 +92,11 @@ app.config(function($routeProvider, $locationProvider, $stateProvider) {
 });
 
 
-app.run(function($rootScope, $location, $state, $transitions) {
+
+
+
+
+app.run(function($rootScope, $location, $state, $transitions, $window) {
 
 //    $transitions.onBefore({}, function(transition) {
 
@@ -102,15 +106,27 @@ app.run(function($rootScope, $location, $state, $transitions) {
 //    });
 
     $transitions.onSuccess({}, function(transition) {
+        if (transition.to().title) {
+            $window.document.title = transition.to().title;
+        }
+
         if (transition.to().name === 'otherwise') {
             $state.go('/404');
         }
+
     });
 
 //    $transitions.onError({}, function(transition) {
 
 //    });
 });
+
+
+
+
+
+
+
 
 
 /**
