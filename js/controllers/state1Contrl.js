@@ -22,7 +22,7 @@ app.controller("state1Contrl", function ($scope, $http, RequestService) {
             function(err){
                 console.log(err);
             }
-        )
+        );
     };
 
     $scope.testPostRequest = function(){
@@ -42,6 +42,27 @@ app.controller("state1Contrl", function ($scope, $http, RequestService) {
             function(err){
                 console.log(err);
             }
-        )
+        );
+    };
+
+    $scope.testWPCall = function(){
+
+        var payload = {
+            //url: 'http://localhost/~jasonvega/campfyre-theme/wp-json/wp/v2/posts',
+            url: 'http://localhost/~jasonvega/campfyre-theme/wp-json/wp/v2/categories',
+            params: {
+
+            }
+        };
+
+
+        RequestService.get(payload).then(
+            function(resp){
+                console.log(resp);
+            },
+            function(err){
+                console.log(err);
+            }
+        );
     };
 });
