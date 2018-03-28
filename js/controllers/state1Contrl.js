@@ -1,22 +1,28 @@
-app.controller("state1Contrl", function ($scope, $http) {
+app.controller("state1Contrl", function ($scope, $http, RequestService) {
 
     console.log('in state 1 cntrl');
 
     $scope.msg = "State 1 controller";
 
+
     $scope.testRequest = function(){
-        console.log('in testrequest');
+
+        var payload = {
+            url: 'https://jsonplaceholder.typicode.com/posts/1/comments',
+            method: "GET",
+            params: {
+
+            }
+        };
 
 
-        $http.get("http://www.google.com")
-            .then(
-            function(response) {
-                console.log(response);
+        RequestService.get(payload).then(
+            function(resp){
+                console.log(resp);
             },
-            function(err) {
+            function(err){
                 console.log(err);
             }
-        );
-
-    }
+        )
+    };
 });
