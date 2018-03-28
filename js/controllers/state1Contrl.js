@@ -5,11 +5,10 @@ app.controller("state1Contrl", function ($scope, $http, RequestService) {
     $scope.msg = "State 1 controller";
 
 
-    $scope.testRequest = function(){
+    $scope.testGetRequest = function(){
 
         var payload = {
             url: 'https://jsonplaceholder.typicode.com/posts/1/comments',
-            method: "GET",
             params: {
 
             }
@@ -17,6 +16,26 @@ app.controller("state1Contrl", function ($scope, $http, RequestService) {
 
 
         RequestService.get(payload).then(
+            function(resp){
+                console.log(resp);
+            },
+            function(err){
+                console.log(err);
+            }
+        )
+    };
+
+    $scope.testPostRequest = function(){
+
+        var payload = {
+            url: 'https://jsonplaceholder.typicode.com/posts',
+            data: {
+                testvar: "blablabla"
+            }
+        };
+
+
+        RequestService.post(payload).then(
             function(resp){
                 console.log(resp);
             },

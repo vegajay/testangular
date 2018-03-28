@@ -98,18 +98,13 @@ app.config(function($routeProvider, $locationProvider, $stateProvider) {
 
 app.run(function($rootScope, $location, $state, $transitions, $window) {
 
-//    $transitions.onBefore({}, function(transition) {
-
-//    });
-//    $transitions.onStart({}, function(transition) {
-
-//    });
-
     $transitions.onSuccess({}, function(transition) {
+        //Make Title
         if (transition.to().title) {
             $window.document.title = transition.to().title;
         }
 
+        //Route 404
         if (transition.to().name === 'otherwise') {
             $state.go('/404');
         }
@@ -117,6 +112,12 @@ app.run(function($rootScope, $location, $state, $transitions, $window) {
     });
 
 //    $transitions.onError({}, function(transition) {
+
+//    });
+//    $transitions.onBefore({}, function(transition) {
+
+//    });
+//    $transitions.onStart({}, function(transition) {
 
 //    });
 });
