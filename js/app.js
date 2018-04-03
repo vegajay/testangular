@@ -140,7 +140,7 @@ app.controller("mainCtrl", function ($scope) {
 
 
 app.controller("londonCtrl", function ($scope) {
-    $scope.msg = "I love London";
+    $scope.msg = "I like London";
 });
 
 
