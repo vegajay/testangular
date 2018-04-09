@@ -1,4 +1,4 @@
-var app = angular.module("myApp", ["ngRoute", "ui.router"]);
+var app = angular.module("myApp", ["ngRoute", "ui.router","ngStorage"]);
 app.config(function($routeProvider, $locationProvider, $stateProvider) {
     $locationProvider.hashPrefix('');
 
@@ -21,6 +21,17 @@ app.config(function($routeProvider, $locationProvider, $stateProvider) {
             views: {
                 "fullscreen": {
                     templateUrl: 'views/404.html'
+                }
+            }
+        })
+        .state('/login',
+        {
+            url: "/login",
+            title: 'Login',
+            views: {
+                "fullscreen": {
+                    controller: "LoginCtrl",
+                    templateUrl: 'views/login.html'
                 }
             }
         })
@@ -96,9 +107,18 @@ app.config(function($routeProvider, $locationProvider, $stateProvider) {
 
 
 
-app.run(function($rootScope, $location, $state, $transitions, $window) {
+app.run(function($rootScope, $location, $state, $transitions, $window, Auth) {
+
+    Auth.init();
 
     $transitions.onSuccess({}, function(transition) {
+
+        //Check Auth
+        if (!Auth.checkPermissionForView()){
+            event.preventDefault();
+            $state.go("/login");
+        }
+
         //Make Title
         if (transition.to().title) {
             $window.document.title = transition.to().title;
@@ -110,6 +130,13 @@ app.run(function($rootScope, $location, $state, $transitions, $window) {
         }
 
     });
+
+
+
+
+
+
+    console.log($rootScope.user);
 
 //    $transitions.onError({}, function(transition) {
 

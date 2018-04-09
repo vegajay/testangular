@@ -1,6 +1,7 @@
-app.controller("state1Contrl", function ($scope, $http, RequestService) {
+app.controller("state1Contrl", function ($rootScope, $scope, $http, RequestService) {
 
     console.log('in state 1 cntrl');
+    console.log($rootScope.user);
 
     $scope.msg = "State 1 controller";
 

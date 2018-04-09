@@ -8,6 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <script src="//unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js"></script><!--v1.0.15-->
+    <script src="js/components/ngStorage/ngStorage.min.js"></script>
 
 
     <!-- app -->
@@ -15,9 +16,11 @@
 
     <!-- controllers -->
     <script type="text/javascript" src="js/controllers/state1Contrl.js"></script>
+    <script type="text/javascript" src="js/controllers/loginContrl.js"></script>
 
     <!-- services -->
     <script type="text/javascript" src="js/services/requests.js"></script>
+    <script type="text/javascript" src="js/services/authService.js"></script>
 
 </head>
 
@@ -31,6 +34,7 @@
 <a href="#test_state2">State 2</a>
 <a href="#test_state3">State 3</a>
 <a href="#test_state4">State 4</a>
+<a href="#login">Login</a>
 
 
 <div ng-view></div>
